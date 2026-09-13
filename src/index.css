@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Slab:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Slab:wght@400;700&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: "Roboto Slab", sans-serif;
   line-height: 1.5;
 
   color: #ebe7ef;
@@ -18,15 +18,21 @@ html {
 }
 
 body {
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at top,
       rgba(241, 210, 70, 0.98),
       rgba(250, 176, 103, 0.87)
     ),
-    url('bg-pattern-dark.png');
+    url("bg-pattern-dark.png");
   background-repeat: repeat;
-  background-size: 100% 100%, 30% 30%, 100% 100%;
-  min-height: 110rem;
+  background-size:
+    100% 100%,
+    30% 30%,
+    100% 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1rem;
 }
 
 header {
@@ -41,16 +47,16 @@ header img {
 }
 
 h1 {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
   font-size: 3rem;
   margin: 0 auto 3rem auto;
   color: #3f3b00;
 }
 
 #game-container {
-  max-width: 45rem;
-  margin: 3rem auto;
-  padding: 2rem;
+  width: min(100%, 45rem);
+  margin: 2rem auto;
+  padding: clamp(1rem, 4vw, 2rem);
   border-radius: 6px;
   background: linear-gradient(#383624, #282617);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -64,13 +70,14 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: clamp(0.5rem, 4vw, 2rem);
 }
 
 #players li {
   display: flex;
   align-items: center;
   width: 50%;
+  min-width: 0;
   border: 2px solid transparent;
 }
 
@@ -109,7 +116,7 @@ h1 {
 
 .player-name {
   display: inline-block;
-  width: 10rem;
+  width: min(10rem, 100%);
   font-size: 1rem;
   color: #e1dec7;
   text-transform: uppercase;
@@ -123,7 +130,7 @@ h1 {
 .player input {
   font: inherit;
   font-size: 1rem;
-  width: 10rem;
+  width: min(10rem, 100%);
   border: none;
   padding: 0.5rem;
   animation: pulse-text 2s infinite;
@@ -153,7 +160,7 @@ ol {
   background: none;
   color: #f8c031;
   border: none;
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
   font-size: 4rem;
   text-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
   animation: pulse-text-size 2s infinite ease-out;
@@ -163,8 +170,8 @@ ol {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  margin: 3rem 0;
+  gap: clamp(0.5rem, 4vw, 2rem);
+  margin: clamp(1.5rem, 5vw, 3rem) 0;
   padding: 0;
   flex-direction: column;
 }
@@ -173,20 +180,20 @@ ol {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: clamp(0.5rem, 4vw, 2rem);
   margin: 0;
   padding: 0;
 }
 
 #game-board button {
-  width: 8rem;
-  height: 8rem;
+  width: clamp(4.5rem, 20vw, 8rem);
+  height: clamp(4.5rem, 20vw, 8rem);
   border: none;
   background: #aca788;
   color: #3f3b00;
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 10vw, 5rem);
   cursor: pointer;
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
   padding: 1rem;
 }
 
@@ -205,7 +212,7 @@ ol {
 }
 
 #game-over h2 {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
   font-size: 4rem;
   text-align: center;
   color: #fcd256;
@@ -228,7 +235,9 @@ ol {
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s, color 0.2s;
+  transition:
+    all 0.2s,
+    color 0.2s;
   box-shadow: 0 0 8px rgba(255, 187, 0, 0.4);
 }
 
@@ -240,7 +249,7 @@ ol {
 }
 
 #log {
-  max-width: 20rem;
+  width: min(100%, 20rem);
   color: #3f3b00;
   list-style: none;
   margin: 2rem auto;
@@ -259,13 +268,46 @@ ol {
   color: white;
 }
 
+@media (max-width: 30rem) {
+  body {
+    padding: 0.5rem;
+  }
+
+  #game-container {
+    margin: 0.5rem auto;
+  }
+
+  #players {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #players li {
+    width: 100%;
+  }
+
+  .player {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .player-name,
+  .player input {
+    width: 100%;
+  }
+
+  #players button {
+    flex: 0 0 3.5rem;
+  }
+}
+
 #game-hints {
   text-align: center;
   color: #46432f;
 }
 
 #game-hints h2 {
-  font-family: 'Caprasimo', cursive;
+  font-family: "Caprasimo", cursive;
   font-size: 2rem;
   margin: 0;
 }
